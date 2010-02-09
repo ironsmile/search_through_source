@@ -1,0 +1,4 @@
+== The lamer's appology
+
+Yea, I know it would be 'better' to do it with bash but hey! I don't really care :)
+
