@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+"""
+Invokes grep with args I don't really want to write every damn time!
+"""
+
+import sys, os
+grep = r'grep -r -i -P %files --regexp="%regexp" --color=always --context=1 --exclude=*.svn-base'
+
+if __name__ == "__main__":
+    if( len(sys.argv) < 2 or sys.argv[1] in ['-h','--help'] ):
+        exit("Invokes: \n\t%s\nUsage:\n\t%s [regexp] [OPTIONAL-files]\n\twhen files is not specified * will be used" % (grep, sys.argv[0]))
+    
+    fls = sys.argv[2] if len(sys.argv) >= 3 else '*'
+    grep = grep.replace(r'%files', fls).replace(r'%regexp', sys.argv[1])
+    os.system( grep )
+
